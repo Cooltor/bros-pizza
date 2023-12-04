@@ -1,9 +1,7 @@
-import "./App.css";
-
 function App() {
   return (
     <>
-      <h1>Bros Pizza</h1>
+      <h1>Yummies Bros Pizzas</h1>
     </>
   );
 }
