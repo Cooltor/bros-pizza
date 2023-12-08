@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  // cart: [ ],
+  cart: [],
 
-  cart: [
-    {
-      pizzaId: 12,
-      name: "Mediterranean Pizza",
-      quantity: 2,
-      price: 8.99,
-      totalPrice: 17.98,
-    },
-  ],
+  //   cart: [
+  //     {
+  //       pizzaId: 12,
+  //       name: "Mediterranean Pizza",
+  //       quantity: 2,
+  //       price: 8.99,
+  //       totalPrice: 17.98,
+  //     },
+  //   ],
 };
 
 const cartSlice = createSlice({
@@ -53,3 +53,11 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const getTotalCartQuantity = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+export const getTotalCartPrice = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+// 'reselect library à voir quand trop de useSelectors'
