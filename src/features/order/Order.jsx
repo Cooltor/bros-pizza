@@ -8,9 +8,20 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import { useFetcher } from "react-router-dom";
+import { useEffect } from "react";
 
 function Order() {
   const order = useLoaderData();
+
+  const fetcher = useFetcher();
+
+  useEffect(() => {
+    if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+  }, [fetcher]);
+
+  console.log(fetcher.data);
+
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
     id,
@@ -31,12 +42,12 @@ function Order() {
 
         <div className="space-x-2 ">
           {priority && (
-            <spa className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
+            <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
               Prioritaire
-            </spa>
+            </span>
           )}
           <span className="rounded-full bg-green-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
-            {status} commande
+            commande {status}
           </span>
         </div>
       </div>
@@ -56,7 +67,14 @@ function Order() {
 
       <ul className="divide-y divide-stone-200 border-b border-t ">
         {cart.map((item) => (
-          <OrderItem key={item.id} item={item} />
+          <OrderItem
+            key={item.pizzaId}
+            item={item}
+            isLoadingIngredients={fetcher.state === "loading"}
+            ingredients={
+              fetcher.data?.find((el) => el.id === item.pizzaId).ingredients
+            }
+          />
         ))}
       </ul>
 
@@ -66,7 +84,7 @@ function Order() {
         </p>
         {priority && (
           <p className="text-sm font-medium text-stone-600">
-            Prix prioritaire : {formatCurrency(priorityPrice)}
+            Option priorité: {formatCurrency(priorityPrice)}
           </p>
         )}
         <p className="font-bold">
