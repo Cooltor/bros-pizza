@@ -11,7 +11,7 @@ function Home() {
         La meilleure pizza.
         <br />
         <span className="text-yellow-500">
-          Directement sortie du four, directement chez vous.
+          Nos pizzas sortent du four pour arriver chez vous.
         </span>
       </h1>
 

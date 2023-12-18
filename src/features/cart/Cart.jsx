@@ -1,8 +1,6 @@
-import { useSelector } from "react-redux";
-import { getCart } from "./cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { getCart, clearCart } from "./cartSlice";
 import { getUsername } from "../user/userSlice";
-import { useDispatch } from "react-redux";
-import { clearCart } from "./cartSlice";
 
 import LinkButton from "../../ui/LinkButton";
 import Button from "../../ui/Button";
