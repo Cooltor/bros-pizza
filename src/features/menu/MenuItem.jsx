@@ -43,7 +43,7 @@ function MenuItem({ pizza }) {
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
             <p className="text-sm font-medium uppercase text-stone-500">
-              Sold out
+              Victime de son succès
             </p>
           )}
 
@@ -59,7 +59,7 @@ function MenuItem({ pizza }) {
 
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAdToCart}>
-              Add to cart
+              Ajouter au panier
             </Button>
           )}
         </div>

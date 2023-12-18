@@ -8,10 +8,10 @@ function Home() {
   return (
     <div className="my-10 px-4 text-center sm:my-16">
       <h1 className="mb-8  text-xl font-semibold md:text-3xl">
-        The best pizza.
+        La meilleure pizza.
         <br />
         <span className="text-yellow-500">
-          Straight out of the oven, straight to you.
+          Directement sortie du four, directement chez vous.
         </span>
       </h1>
 
@@ -19,7 +19,7 @@ function Home() {
         <CreateUser />
       ) : (
         <Button to="/menu" type="primary">
-          Start ordering
+          Commander
         </Button>
       )}
     </div>

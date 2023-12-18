@@ -47,11 +47,13 @@ function CreateOrder() {
 
   return (
     <div className="px-4 py-6">
-      <h2 className="mb-8 text-xl font-semibold">Ready to order? Lets go!</h2>
+      <h2 className="mb-8 text-xl font-semibold">
+        Prêt à commander? Allons-y!
+      </h2>
       {/* <Form method="POST" action ="/api/order/new"> */}
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center ">
-          <label className=" sm:basis-40">First Name</label>
+          <label className=" sm:basis-40">Prénom</label>
           <input
             type="text"
             name="customer"
@@ -62,7 +64,7 @@ function CreateOrder() {
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className=" sm:basis-40">Phone number</label>
+          <label className=" sm:basis-40">Téléphone</label>
           <div className=" grow ">
             <input type="tel" name="phone" required className="input w-full" />
 
@@ -75,7 +77,7 @@ function CreateOrder() {
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className=" sm:basis-40">Address</label>
+          <label className=" sm:basis-40">Adresse</label>
           <div className="grow">
             <input
               type="text"
@@ -96,14 +98,14 @@ function CreateOrder() {
             className="h-6 w-6 rounded border-gray-300 accent-yellow-400 focus:ring-yellow-400 focus:ring-offset-2"
           />
           <label htmlFor="priority" className="font-medium">
-            Want to yo give your order priority?
+            Voulez-vous une livraison prioritaire ?
           </label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button type="primary" disabled={isSubmitting}>
-            {isSubmitting ? "Placing order..." : "Order now"}
+            {isSubmitting ? "en cours..." : "Commander maintenant"}
           </Button>
         </div>
       </Form>
@@ -125,7 +127,7 @@ export async function action({ request }) {
   const errors = {};
   if (!isValidPhone(order.phone)) {
     errors.phone =
-      "Please enter a valid phone number. We might need to call you!";
+      "Veuillez entrer un numéro de téléphone valide. Nous pouvons être amené à vous appeler!";
   }
 
   if (Object.keys(errors).length > 0) {
