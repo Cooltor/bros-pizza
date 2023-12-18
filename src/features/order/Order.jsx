@@ -2,6 +2,7 @@
 import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
 import OrderItem from "./OrderItem";
+import UpdateOrder from "./UpdateOrder";
 
 import {
   calcMinutesLeft,
@@ -91,6 +92,7 @@ function Order() {
           A payer à la livraison: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 }
